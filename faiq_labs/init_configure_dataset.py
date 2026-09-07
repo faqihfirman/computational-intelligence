@@ -8,7 +8,7 @@ from huggingface_hub import HfApi, hf_hub_download
 REPO_ID = "raihanfaiq72/my_face"
 VIDEO_FILE = "my_face.mov"
 
-PICTURE_FILDER = "picture"
+PICTURE_FILDER = "picture/faiq"
 
 FRAME_INTERVAL = 1
 
