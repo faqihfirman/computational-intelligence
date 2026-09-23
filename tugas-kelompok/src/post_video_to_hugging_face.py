@@ -6,9 +6,9 @@ REPO_ID = "raihanfaiq72/my_face"
 REPO_TYPE = "dataset"
 
 # Isi bagian ini 
-SOURCE_VIDEO_PATH = "/path/ke/video/kamu.mov"   # path video mentah (local)
+SOURCE_VIDEO_PATH = "../data/videos/test/faqih/faqih_test_video.mp4"   # path video mentah (local)
 NAMA_ANGGOTA = "faqih"                          # nama folder tujuan hugging face
-SPLIT = "train"                                 # "train" atau "test"
+SPLIT = "test"                                 # "train" atau "test"
 
 
 def upload_video(source_video_path, nama_anggota, split,
@@ -26,7 +26,8 @@ def upload_video(source_video_path, nama_anggota, split,
     person_folder = os.path.join(base_dir, "data", "videos", split, nama_anggota)
     os.makedirs(person_folder, exist_ok=True)
     local_dest = os.path.join(person_folder, file_name)
-    shutil.copy2(source_video_path, local_dest)
+    if os.path.abspath(source_video_path) != os.path.abspath(local_dest):
+        shutil.copy2(source_video_path, local_dest)
 
     path_in_repo = f"videos/{split}/{nama_anggota}/{file_name}"
 
