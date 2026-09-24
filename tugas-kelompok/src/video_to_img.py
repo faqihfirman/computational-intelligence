@@ -3,7 +3,7 @@ import os
 
 
 def video_to_img(video_path, image_folder, nama_anggota, split, start_index=0,
-                  frame_skip=5, img_size=(224, 224)):
+                  frame_skip=5):
 
     os.makedirs(image_folder, exist_ok=True)
 
@@ -23,11 +23,8 @@ def video_to_img(video_path, image_folder, nama_anggota, split, start_index=0,
             break
 
         if count % frame_skip == 0:
-            gray_frame = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-            resized_frame = cv.resize(gray_frame, img_size)
-
             file_name = f"{image_folder}/{nama_anggota}_{split}_{img_count:05d}.jpg"
-            cv.imwrite(file_name, resized_frame)
+            cv.imwrite(file_name, frame)
             img_count += 1
 
         count += 1
