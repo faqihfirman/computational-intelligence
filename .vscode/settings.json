@@ -1,0 +1,4 @@
+{
+    "python.analysis.extraPaths": ["tugas-kelompok/src"],
+    "jupyter.notebookFileRoot": "${fileDirname}"
+}
