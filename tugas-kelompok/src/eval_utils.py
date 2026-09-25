@@ -1,3 +1,4 @@
+import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -40,7 +41,8 @@ def plot_sample_predictions(model, paths_test, y_test, label_encoder, predict_fn
         is_correct = pred_label == true_label
         color = "green" if is_correct else "red"
 
-        ax.imshow(image, cmap="gray")
+        display_image = cv2.cvtColor(cv2.imread(image_path), cv2.COLOR_BGR2RGB)
+        ax.imshow(display_image)
         ax.axis("off")
         ax.set_title(f"True: {true_label}\nPred: {pred_label} ({confidence:.1%})",
                      color=color, fontsize=10)
